@@ -1,0 +1,16 @@
+<div class="progress-panel card">
+  <div class="progress-header">
+    <p class="progress-title">Progress</p>
+    <p class="progress-stats">✅ Completed: {{ completed }} / {{ total }}</p>
+  </div>
+  <div class="progress-bar-bg">
+    <div
+      class="progress-bar-fill"
+      [style.width.%]="total > 0 ? (completed / total) * 100 : 0"
+    ></div>
+  </div>
+  <div class="progress-details">
+    <span>{{ completed }} completed</span>
+    <span>{{ total }} total</span>
+  </div>
+</div>

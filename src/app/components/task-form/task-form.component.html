@@ -1,0 +1,54 @@
+<div class="task-form">
+  <div class="form-row">
+    <div class="input-group">
+      <label for="title">Task Title:</label>
+      <input
+        type="text"
+        [(ngModel)]="title"
+        placeholder="Title"
+        class="input-field"
+      />
+    </div>
+    <div class="input-group">
+      <label for="description">Description:</label>
+      <input
+        type="text"
+        [(ngModel)]="description"
+        placeholder="Description (Optional)"
+        class="input-field"
+      />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="input-group">
+      <label for="startDate">start Date:</label>
+      <input
+        type="date"
+        [(ngModel)]="startDate"
+        class="input-field"
+      />
+    </div>
+  <div class="form-row">
+    <div class="input-group">
+      <label for="dueDate">Due Date:</label>
+      <input
+        type="date"
+        [(ngModel)]="dueDate"
+        class="input-field"
+      />
+    </div>
+    <div class="input-group">
+      <label for="priority">Set Priority:</label>
+      <select [(ngModel)]="priority" class="input-field">
+        <option value="low">Low Priority</option>
+        <option value="medium" selected>Medium Priority</option>
+        <option value="high">High Priority</option>
+      </select>
+    </div>
+  </div>
+  <div class="add-task-container">
+    <button class="btn btn-primary" (click)="submitTask()">
+      <i class="material-icons">{{ taskToEdit ? 'edit' : 'add' }}</i> {{ taskToEdit ? 'Update Task' : 'Add Task' }}
+    </button>
+  </div>
+</div>

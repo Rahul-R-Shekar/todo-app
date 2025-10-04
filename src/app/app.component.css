@@ -1,0 +1,154 @@
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.app-header {
+  background: linear-gradient(135deg, #6366F1, #4F46E5);
+  color: white;
+  padding: 1.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px 12px 0 0;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.app-header h1 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.search-container {
+  position: relative;
+  width: 280px;
+  min-width: 200px;
+  flex-shrink: 0;
+}
+
+.search-input {
+  padding: 0.8rem 1rem 0.8rem 2.8rem;
+  border-radius: 50px;
+  border: none;
+  width: 100%;
+  font-size: 0.95rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+}
+
+.main-content {
+  padding: 2rem;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1.8rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-btn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 50px;
+  border: 1px solid #E5E7EB;
+  background-color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  flex: 1;
+  min-width: 100px;
+  text-align: center;
+}
+
+.filter-btn.active {
+  background-color: #4F46E5;
+  color: white;
+  border-color: #4F46E5;
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.3);
+}
+
+.filter-btn:hover:not(.active) {
+  background-color: #F9FAFB;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 1rem;
+    border-radius: 12px;
+  }
+  
+  .app-header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  
+  .search-container {
+    width: 100%;
+  }
+  
+  .filters {
+    justify-content: stretch;
+  }
+  
+  .filter-btn {
+    flex: 1;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    padding: 1.2rem;
+  }
+  
+  .main-content {
+    padding: 1.5rem;
+  }
+  
+  .filters {
+    flex-direction: column;
+  }
+  
+  .filter-btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,44 @@
+<div class="task-list">
+  <div *ngFor="let task of tasks" class="task-item" [class.completed]="task.completed" [class.high-priority]="task.priority === 'high'" [class.medium-priority]="task.priority === 'medium'" [class.low-priority]="task.priority === 'low'">
+    <input type="checkbox" [checked]="task.completed" (change)="toggleComplete(task)" class="task-checkbox" />
+    <div class="task-info">
+      <div class="task-title">
+        <span [class.completed]="task.completed">{{ task.title }}</span>
+        <span class="task-priority" [class.priority-high]="task.priority === 'high'" [class.priority-medium]="task.priority === 'medium'" [class.priority-low]="task.priority === 'low'">
+          {{ task.priority }}
+        </span>
+      </div>
+      <span class="task-desc">{{ task.description }}</span>
+      <div class="task-meta">
+        <div class="task-date" [class.overdue]="isOverdue(task)">
+          <label>Start Date: </label>
+          <i class="material-icons">event</i>
+          {{ formatDate(task.startDate) }}
+        </div><br>
+        <div class="task-date" [class.overdue]="isOverdue(task)">
+          <label>Due Date: </label>
+          <i class="material-icons">event</i>
+          {{ formatDate(task.dueDate) }}
+        </div>
+      </div>
+    </div>
+    <div class="task-actions">
+      <button *ngIf="!isBin" class="btn-icon btn-edit" (click)="editTask.emit(task)">
+        <i class="material-icons">edit</i>
+      </button>
+      <button *ngIf="!isBin" class="btn-icon btn-delete" (click)="deleteTask(task.id)">
+        <i class="material-icons">delete</i>
+      </button>
+      <button *ngIf="isBin" class="btn-icon btn-restore" (click)="restoreTask(task.id)">
+        <i class="material-icons">restore</i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Empty state -->
+  <div class="empty-state" *ngIf="tasks.length === 0">
+    <i class="material-icons">assignment</i>
+    <h3>No tasks yet</h3>
+    <p>Add a new task to get started</p>
+  </div>
+</div>

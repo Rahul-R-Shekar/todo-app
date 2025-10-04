@@ -1,0 +1,68 @@
+<div class="container">
+  <!-- Header -->
+  <header class="app-header">
+    <h1><i class="material-icons">check_circle</i>To-Do List</h1>
+    <div class="search-container">
+      <i class="material-icons search-icon">search</i>
+      <input
+        type="text"
+        placeholder="Search tasks..."
+        [(ngModel)]="search"
+        (ngModelChange)="onSearchChange($event)"
+        class="search-input"
+      />
+    </div>
+  </header>
+
+  <div class="main-content">
+    <!-- Filters -->
+    <div class="filters">
+      <button 
+        class="filter-btn" 
+        [class.active]="filter === 'all'"
+        (click)="setFilter('all')">
+        All Tasks
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="filter === 'active'"
+        (click)="setFilter('active')">
+        Active
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="filter === 'completed'"
+        (click)="setFilter('completed')">
+        Completed
+      </button>
+    </div>
+
+    <!-- Task Form -->
+    <app-task-form 
+      [taskToEdit]="taskToEdit"
+      (taskAdded)="addTask($event)"
+      (taskUpdated)="updateTask($event)"
+    ></app-task-form>
+
+    <!-- Task List -->
+    <app-task-list
+      [tasks]="filtered"
+      (update)="updateTasks($event)"
+      (delete)="deleteTask($event)"
+      (editTask)="editTask($event)"
+    ></app-task-list>
+
+    <!-- Progress Panel -->
+    <app-progress-panel [tasks]="tasks"></app-progress-panel>
+
+    <!-- Bin Section -->
+    <div class="bin-section">
+      <h3>Bin</h3>
+      <app-task-list
+        [tasks]="binTasks"
+        [isBin]="true"
+        (restore)="restoreTask($event)"
+      ></app-task-list>
+    </div>
+  </div>
+</div>
